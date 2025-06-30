@@ -1,0 +1,21 @@
+[2025-06-26T16:32:45.883+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: cards_etl.etl_cards_task scheduled__2025-06-26T16:24:00+00:00 [queued]>
+[2025-06-26T16:32:45.898+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: cards_etl.etl_cards_task scheduled__2025-06-26T16:24:00+00:00 [queued]>
+[2025-06-26T16:32:45.899+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-26T16:32:45.919+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): etl_cards_task> on 2025-06-26 16:24:00+00:00
+[2025-06-26T16:32:45.934+0000] {standard_task_runner.py:60} INFO - Started process 5741 to run task
+[2025-06-26T16:32:45.938+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'cards_etl', 'etl_cards_task', 'scheduled__2025-06-26T16:24:00+00:00', '--job-id', '57', '--raw', '--subdir', 'DAGS_FOLDER/etl_cards_dag.py', '--cfg-path', '/tmp/tmpx6ctk7dm']
+[2025-06-26T16:32:45.941+0000] {standard_task_runner.py:88} INFO - Job 57: Subtask etl_cards_task
+[2025-06-26T16:32:46.010+0000] {task_command.py:423} INFO - Running <TaskInstance: cards_etl.etl_cards_task scheduled__2025-06-26T16:24:00+00:00 [running]> on host 65da94c758f2
+[2025-06-26T16:32:46.409+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='jimmy' AIRFLOW_CTX_DAG_ID='cards_etl' AIRFLOW_CTX_TASK_ID='etl_cards_task' AIRFLOW_CTX_EXECUTION_DATE='2025-06-26T16:24:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-06-26T16:24:00+00:00'
+[2025-06-26T16:32:46.413+0000] {etl_cards_dag.py:22} INFO - Starting ETL for cards
+[2025-06-26T16:32:46.532+0000] {ETL_dim_card.py:21} INFO - ✅ Extracted cards_data.csv with 6146 records
+[2025-06-26T16:32:46.534+0000] {ETL_dim_card.py:36} INFO - Starting transformation of CARDS data.
+[2025-06-26T16:32:46.604+0000] {ETL_dim_card.py:56} INFO - Removed columns ['client_id', 'card_number', 'cvv'] from CARDS data.
+[2025-06-26T16:32:46.605+0000] {ETL_dim_card.py:57} INFO - finished transformation of CARDS data.
+[2025-06-26T16:32:46.614+0000] {load_data.py:34} INFO - Successfully created database connection engine.
+[2025-06-26T16:33:00.083+0000] {load_data.py:81} INFO - Successfully loaded data into table 'financial.dim_card'. 6146 rows and 10 columns
+[2025-06-26T16:33:00.084+0000] {etl_cards_dag.py:27} INFO - Finished ETL for cards
+[2025-06-26T16:33:00.085+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-06-26T16:33:00.099+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=cards_etl, task_id=etl_cards_task, execution_date=20250626T162400, start_date=20250626T163245, end_date=20250626T163300
+[2025-06-26T16:33:00.143+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-06-26T16:33:00.329+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

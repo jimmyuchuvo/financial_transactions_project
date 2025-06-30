@@ -1,0 +1,416 @@
+2025-06-11 11:06:55 - __main__ - INFO - ETL process started
+2025-06-11 11:06:55 - __main__ - ERROR - Something went wrong
+2025-06-11 11:07:55 - __main__ - INFO - ETL process started
+2025-06-11 11:07:55 - __main__ - ERROR - Something went wrong
+2025-06-11 11:07:55 - __main__ - WARNING - This is a warning message
+2025-06-11 11:07:55 - __main__ - DEBUG - Debugging information
+2025-06-11 11:09:18 - __main__ - INFO - ETL process started
+2025-06-11 11:09:18 - __main__ - ERROR - Something went wrong
+2025-06-11 11:10:02 - __main__ - INFO - ETL process started
+2025-06-11 11:10:02 - __main__ - ERROR - Something went wrong
+2025-06-11 11:10:02 - __main__ - WARNING - This is a warning message: now it works
+2025-06-11 11:10:02 - __main__ - DEBUG - Debugging information: this will not be shown by default
+2025-06-11 12:31:57 - __main__ - INFO - ETL process started
+2025-06-11 12:31:57 - __main__ - ERROR - Something went wrong
+2025-06-11 12:31:57 - __main__ - WARNING - This is a warning message: now it works
+2025-06-11 12:31:57 - __main__ - DEBUG - Debugging information: this will not be shown by default
+2025-06-11 12:34:42 - root - INFO - ETL process started
+2025-06-11 12:34:42 - root - ERROR - Something went wrong
+2025-06-11 12:34:42 - root - WARNING - This is a warning message: now it works
+2025-06-11 12:34:42 - root - DEBUG - Debugging information: this will not be shown by default
+2025-06-11 12:35:30 - __main__ - INFO - ETL process started
+2025-06-11 12:35:30 - __main__ - INFO - ETL process started
+2025-06-11 12:35:30 - __main__ - ERROR - Something went wrong
+2025-06-11 12:35:30 - __main__ - ERROR - Something went wrong
+2025-06-11 12:35:30 - __main__ - WARNING - This is a warning message: now it works
+2025-06-11 12:35:30 - __main__ - WARNING - This is a warning message: now it works
+2025-06-11 12:35:30 - __main__ - DEBUG - Debugging information: this will not be shown by default
+2025-06-11 12:35:30 - __main__ - DEBUG - Debugging information: this will not be shown by default
+2025-06-11 12:36:22 - __main__ - INFO - ETL process completed successfully
+2025-06-11 12:36:22 - __main__ - INFO - ETL process completed successfully
+2025-06-11 12:36:57 - __main__ - INFO - twice why?
+2025-06-11 12:36:57 - __main__ - INFO - twice why?
+2025-06-11 12:41:51 - __main__ - INFO - ETL process started
+2025-06-11 12:41:51 - __main__ - INFO - ETL process started
+2025-06-11 12:41:51 - __main__ - ERROR - Something went wrong
+2025-06-11 12:41:51 - __main__ - ERROR - Something went wrong
+2025-06-11 12:41:51 - __main__ - WARNING - This is a warning message: now it works
+2025-06-11 12:41:51 - __main__ - WARNING - This is a warning message: now it works
+2025-06-11 12:41:51 - __main__ - DEBUG - Debugging information: this will not be shown by default
+2025-06-11 12:41:51 - __main__ - DEBUG - Debugging information: this will not be shown by default
+2025-06-11 12:41:51 - __main__ - INFO - twice why?
+2025-06-11 12:41:51 - __main__ - INFO - twice why?
+2025-06-11 12:42:58 - __main__ - INFO - twice why?
+2025-06-11 12:43:53 - __main__ - INFO - ETL process started
+2025-06-11 12:43:53 - __main__ - ERROR - Something went wrong
+2025-06-11 12:43:53 - __main__ - WARNING - This is a warning message: now it works
+2025-06-11 12:43:53 - __main__ - DEBUG - Debugging information: this will not be shown by default
+2025-06-11 12:43:56 - __main__ - INFO - twice why?
+2025-06-11 12:44:27 - __main__ - INFO - twice why?
+2025-06-11 12:56:15 - __main__ - INFO - ETL process started
+2025-06-11 12:56:15 - __main__ - INFO - ETL process started
+2025-06-11 12:56:15 - __main__ - ERROR - Something went wrong
+2025-06-11 12:56:15 - __main__ - ERROR - Something went wrong
+2025-06-11 12:56:15 - __main__ - WARNING - This is a warning message: now it works
+2025-06-11 12:56:15 - __main__ - WARNING - This is a warning message: now it works
+2025-06-11 12:56:15 - __main__ - DEBUG - Debugging information: this will not be shown by default
+2025-06-11 12:56:15 - __main__ - DEBUG - Debugging information: this will not be shown by default
+2025-06-11 12:58:07 - __main__ - INFO - ETL process started
+2025-06-11 12:58:07 - __main__ - INFO - ETL process started
+2025-06-11 12:58:07 - __main__ - ERROR - Something went wrong
+2025-06-11 12:58:07 - __main__ - ERROR - Something went wrong
+2025-06-11 12:58:07 - __main__ - WARNING - This is a warning message: now it works
+2025-06-11 12:58:07 - __main__ - WARNING - This is a warning message: now it works
+2025-06-11 12:58:07 - __main__ - DEBUG - Debugging information: this will not be shown by default
+2025-06-11 12:58:07 - __main__ - DEBUG - Debugging information: this will not be shown by default
+2025-06-11 12:58:28 - __main__ - INFO - twice why?
+2025-06-11 12:58:28 - __main__ - INFO - twice why?
+2025-06-11 12:58:50 - __main__ - INFO - ETL process started
+2025-06-11 12:58:50 - __main__ - INFO - ETL process started
+2025-06-11 12:58:50 - __main__ - ERROR - Something went wrong
+2025-06-11 12:58:50 - __main__ - ERROR - Something went wrong
+2025-06-11 12:58:50 - __main__ - WARNING - This is a warning message: now it works
+2025-06-11 12:58:50 - __main__ - WARNING - This is a warning message: now it works
+2025-06-11 12:58:50 - __main__ - DEBUG - Debugging information: this will not be shown by default
+2025-06-11 12:58:50 - __main__ - DEBUG - Debugging information: this will not be shown by default
+2025-06-11 13:02:36 - __main__ - INFO - twice why?
+2025-06-11 13:02:36 - __main__ - INFO - twice why?
+2025-06-11 13:05:24 - __main__ - INFO - ETL process started
+2025-06-11 13:05:24 - __main__ - INFO - ETL process started
+2025-06-11 13:05:24 - __main__ - ERROR - Something went wrong
+2025-06-11 13:05:24 - __main__ - ERROR - Something went wrong
+2025-06-11 13:05:24 - __main__ - WARNING - This is a warning message: now it works
+2025-06-11 13:05:24 - __main__ - WARNING - This is a warning message: now it works
+2025-06-11 13:05:24 - __main__ - DEBUG - Debugging information: this will not be shown by default
+2025-06-11 13:05:24 - __main__ - DEBUG - Debugging information: this will not be shown by default
+2025-06-11 13:13:04 - __main__ - INFO - ETL process started
+2025-06-11 13:13:04 - __main__ - INFO - ETL process started
+2025-06-11 13:13:04 - __main__ - ERROR - Something went wrong
+2025-06-11 13:13:04 - __main__ - ERROR - Something went wrong
+2025-06-11 13:13:04 - __main__ - WARNING - This is a warning message: now it works
+2025-06-11 13:13:04 - __main__ - WARNING - This is a warning message: now it works
+2025-06-11 13:13:04 - __main__ - DEBUG - Debugging information: this will not be shown by default
+2025-06-11 13:13:04 - __main__ - DEBUG - Debugging information: this will not be shown by default
+2025-06-11 13:14:01 - __main__ - INFO - ETL process started
+2025-06-11 13:14:01 - __main__ - INFO - ETL process started
+2025-06-11 13:14:01 - __main__ - ERROR - Something went wrong
+2025-06-11 13:14:01 - __main__ - ERROR - Something went wrong
+2025-06-11 13:14:01 - __main__ - WARNING - This is a warning message: now it works
+2025-06-11 13:14:01 - __main__ - WARNING - This is a warning message: now it works
+2025-06-11 13:14:01 - __main__ - DEBUG - Debugging information: this will not be shown by default
+2025-06-11 13:14:01 - __main__ - DEBUG - Debugging information: this will not be shown by default
+2025-06-11 13:14:35 - __main__ - INFO - ETL process started
+2025-06-11 13:14:35 - __main__ - INFO - ETL process started
+2025-06-11 13:14:35 - __main__ - ERROR - Something went wrong
+2025-06-11 13:14:35 - __main__ - ERROR - Something went wrong
+2025-06-11 13:14:35 - __main__ - WARNING - This is a warning message: now it works
+2025-06-11 13:14:35 - __main__ - WARNING - This is a warning message: now it works
+2025-06-11 13:14:35 - __main__ - DEBUG - Debugging information: this will not be shown by default
+2025-06-11 13:14:35 - __main__ - DEBUG - Debugging information: this will not be shown by default
+2025-06-11 13:16:14 - __main__ - INFO - ETL process completed successfully
+2025-06-11 13:18:07 - __main__ - INFO - ETL process started
+2025-06-11 13:18:07 - __main__ - INFO - ETL process started
+2025-06-11 13:18:07 - __main__ - ERROR - Something went wrong
+2025-06-11 13:18:07 - __main__ - ERROR - Something went wrong
+2025-06-11 13:18:07 - __main__ - WARNING - This is a warning message: now it works
+2025-06-11 13:18:07 - __main__ - WARNING - This is a warning message: now it works
+2025-06-11 13:18:07 - __main__ - DEBUG - Debugging information: this will not be shown by default
+2025-06-11 13:18:07 - __main__ - DEBUG - Debugging information: this will not be shown by default
+2025-06-11 13:18:38 - __main__ - INFO - ETL process completed successfully
+2025-06-11 13:20:36 - __main__ - INFO - ETL process completed successfully
+2025-06-11 13:21:08 - __main__ - INFO - twice why?
+2025-06-11 13:21:08 - __main__ - INFO - twice why?
+2025-06-11 13:47:46 - __main__ - INFO - ETL process completed successfully
+2025-06-11 13:47:46 - __main__ - INFO - ETL process completed successfully
+2025-06-11 14:04:04 - __main__ - INFO - twice, again, GOD
+2025-06-11 14:04:04 - __main__ - INFO - twice, again, GOD
+2025-06-11 14:04:47 - __main__ - INFO - twice, again, GOD
+2025-06-11 14:05:59 - __main__ - INFO - thanks GOD
+2025-06-11 14:06:15 - __main__ - INFO - thanks GOD 2
+2025-06-11 14:06:15 - __main__ - INFO - thanks GOD 2
+2025-06-11 14:06:29 - __main__ - INFO - thanks GOD 3
+2025-06-11 14:20:11 - test_extract - INFO - loading Data...
+2025-06-11 14:49:10 - __main__ - INFO - ETL process completed successfully
+2025-06-11 14:49:10 - __main__ - INFO - ETL process completed successfully
+2025-06-11 14:49:47 - __main__ - INFO - thanks GOD 3
+2025-06-11 14:49:47 - __main__ - INFO - thanks GOD 3
+2025-06-11 14:50:11 - test_extract - INFO - loading Data...
+2025-06-11 14:50:55 - __main__ - INFO - ETL process completed successfully
+2025-06-11 14:50:55 - __main__ - INFO - ETL process completed successfully
+2025-06-11 14:58:27 - __main__ - INFO - thanks GOD 3
+2025-06-11 14:58:27 - __main__ - INFO - thanks GOD 3
+2025-06-11 14:58:41 - __main__ - INFO - thanks GOD 3
+2025-06-11 14:58:58 - __main__ - INFO - ETL process completed successfully
+2025-06-11 15:02:29 - __main__ - INFO - thanks GOD 3
+2025-06-11 15:02:29 - __main__ - INFO - thanks GOD 3
+2025-06-11 15:02:41 - test_extract - INFO - loading Data...
+2025-06-11 15:03:04 - __main__ - INFO - ETL process completed successfully
+2025-06-11 15:03:04 - __main__ - INFO - ETL process completed successfully
+2025-06-11 15:03:16 - test_extract - INFO - loading Data...
+2025-06-11 15:03:34 - __main__ - INFO - thanks GOD 3
+2025-06-11 15:03:34 - __main__ - INFO - thanks GOD 3
+2025-06-11 15:03:41 - test_extract - INFO - loading Data...
+2025-06-11 15:10:58 - __main__ - INFO - ETL process completed successfully
+2025-06-11 15:21:26 - root - INFO - ETL process completed successfully
+2025-06-11 15:22:52 - ETL_logger - INFO - ETL process completed successfully
+2025-06-11 15:23:27 - __main__ - INFO - ETL process completed successfully
+2025-06-11 15:23:38 - __main__ - INFO - thanks GOD 3
+2025-06-11 15:24:03 - __main__ - INFO - ETL process completed successfully
+2025-06-11 15:25:24 - __main__ - WARNING - This is a warning message
+2025-06-11 15:25:34 - __main__ - INFO - This is an error message
+2025-06-11 15:26:43 - __main__ - WARNING - This is a warning message
+2025-06-11 15:26:56 - __main__ - INFO - This is an error message
+2025-06-11 15:27:57 - __main__ - ERROR - This is an error message
+2025-06-11 15:28:25 - __main__ - ERROR - Jimmy This is an error message
+2025-06-11 15:33:49 - __main__ - WARNING - This is a warning message
+2025-06-11 15:34:02 - __main__ - ERROR - Jimmy This is an error message
+2025-06-11 15:35:37 - __main__ - INFO - now Im ready to continue
+2025-06-11 15:35:47 - __main__ - INFO - now Im ready to continue 2
+2025-06-11 15:44:49 - __main__ - INFO - now Im ready to continue 2
+2025-06-11 15:45:00 - __main__ - INFO - now Im ready to continue 4
+2025-06-11 15:46:32 - __main__ - INFO - now Im ready to continue 4
+2025-06-11 15:48:50 - __main__ - INFO - now Im ready to continue 5
+2025-06-11 15:49:32 - __main__ - INFO - now Im ready to continue 5
+2025-06-11 15:50:09 - ETL_logger - INFO - now Im ready to continue 5
+2025-06-11 15:53:05 - __main__ - INFO - now Im ready to continue 5
+2025-06-11 16:00:07 - __main__ - INFO - now Im ready to continue 5
+2025-06-11 16:04:08 - __main__ - INFO - now Im ready to continue 5
+2025-06-11 16:05:14 - __main__ - INFO - now Im ready to continue 5
+2025-06-11 16:08:46 - __main__ - INFO - now Im ready to continue 5
+2025-06-11 16:19:20 - __main__ - INFO - now Im ready to continue 5
+2025-06-11 17:30:29 - __main__ - INFO - now Im ready to continue 10
+2025-06-11 17:31:35 - __main__ - WARNING - This is a warning message
+2025-06-11 17:41:12 - __main__ - INFO - now Im ready to continue 10
+2025-06-11 17:41:31 - __main__ - WARNING - This is a warning message
+2025-06-11 17:42:36 - __main__ - INFO - ETL process completed successfully
+2025-06-11 17:53:33 - __main__ - ERROR - This is an error message: it will be shown in the log file
+2025-06-11 18:35:53 - root - INFO - 🔧 Logging desde main
+2025-06-11 18:35:53 - ETL.extract - INFO - Loading Data...
+2025-06-11 18:38:43 - root - INFO - 🔧 Logging desde main
+2025-06-11 18:38:43 - ETL.extract - INFO - Loading Data...
+2025-06-11 18:39:23 - root - INFO - 🔧 Logging desde main
+2025-06-11 18:39:23 - ETL.extract - INFO - Loading Data...
+2025-06-11 18:40:19 - root - INFO - 🔧 Logging desde main
+2025-06-11 18:40:19 - ETL.extract - INFO - Loading Data...
+2025-06-11 18:40:55 - ETL.extract - INFO - Loading Data...
+2025-06-11 18:41:37 - root - INFO - 🔧 Logging desde main
+2025-06-11 18:41:37 - ETL.extract - INFO - Loading Data...
+2025-06-11 18:41:39 - root - INFO - 🔧 Logging desde main
+2025-06-11 18:41:39 - ETL.extract - INFO - Loading Data...
+2025-06-11 18:43:30 - root - INFO - 🔧 Logging desde main
+2025-06-11 18:43:30 - ETL.extract - INFO - 📦 Extrayendo datos desde extract.py
+2025-06-11 18:44:33 - root - ERROR - This is an error message: it will be shown in the log file
+2025-06-11 18:46:21 - root - INFO - 🔧 Logging desde main
+2025-06-11 18:46:21 - ETL.extract - INFO - 📦 Extrayendo datos desde extract.py
+2025-06-11 18:47:00 - root - INFO - 🔧 Logging desde main
+2025-06-11 18:47:00 - ETL.extract - INFO - 📦 Extrayendo datos desde extract.py
+2025-06-11 18:47:17 - root - INFO - 🔧 Logging desde main
+2025-06-11 18:47:27 - root - INFO - 🔧 Logging desde main
+2025-06-11 18:47:48 - root - INFO - 🔧 Logging desde main
+2025-06-11 18:47:48 - ETL.extract - INFO - 📦 loading data from extract.py
+2025-06-11 18:48:15 - ETL.utils - INFO - 🔧 Logging desde main
+2025-06-11 18:48:15 - ETL.extract - INFO - 📦 loading data from extract.py
+2025-06-11 18:49:22 - ETL.utils - INFO - 🔧 Logging desde main
+2025-06-11 18:49:22 - ETL.extract - INFO - 📦 loading data from extract.py
+2025-06-11 18:51:27 - __main__ - INFO - 🔧 Logging desde main
+2025-06-11 18:51:27 - __main__ - INFO - 🔧 Logging desde main
+2025-06-11 18:51:27 - ETL.extract - INFO - 📦 loading data from extract.py
+2025-06-11 18:52:01 - root - INFO - 🔧 Logging desde main
+2025-06-11 18:52:01 - ETL.extract - INFO - 📦 loading data from extract.py
+2025-06-11 18:55:00 - root - INFO - 🔧 Logging desde main
+2025-06-11 18:55:00 - ETL.extract - INFO - 📦 loading data from extract.py
+2025-06-11 18:57:01 - __main__ - INFO - 🔧 Logging desde main
+2025-06-11 18:57:01 - __main__ - INFO - 🔧 Logging desde main
+2025-06-11 18:57:01 - ETL.extract - INFO - 📦 loading data from extract.py
+2025-06-11 18:57:18 - __main__ - INFO - 🔧 Logging desde main
+2025-06-11 18:58:18 - __main__ - INFO - 🔧 Logging desde main
+2025-06-11 18:58:18 - __main__ - INFO - 🔧 Logging desde main
+2025-06-11 18:58:18 - ETL.extract - INFO - 📦 loading data from extract.py
+2025-06-11 18:59:02 - root - INFO - 🔧 Logging desde main
+2025-06-11 18:59:02 - ETL.extract - INFO - 📦 loading data from extract.py
+2025-06-11 18:59:35 - root - INFO - 🔧 Logging desde main
+2025-06-11 18:59:35 - ETL.extract - INFO - 📦 loading data from extract.py
+2025-06-11 19:00:02 - root - INFO - 🔧 Logging desde main
+2025-06-11 19:00:02 - ETL.extract - INFO - 📦 loading data from extract.py
+2025-06-11 19:00:14 - ETL_Logger - INFO - 🔧 Logging desde main
+2025-06-11 19:00:14 - ETL.extract - INFO - 📦 loading data from extract.py
+2025-06-11 19:01:02 - ETL_Logger - INFO - 🔧 Logging desde main
+2025-06-11 19:01:02 - ETL.extract - INFO - 📦 loading data from extract.py
+2025-06-11 19:01:14 - root - INFO - 🔧 Logging desde main
+2025-06-11 19:01:14 - ETL.extract - INFO - 📦 loading data from extract.py
+2025-06-11 19:01:28 - __main__ - INFO - 🔧 Logging desde main
+2025-06-11 19:01:28 - __main__ - INFO - 🔧 Logging desde main
+2025-06-11 19:01:28 - ETL.extract - INFO - 📦 loading data from extract.py
+2025-06-11 19:01:38 - __main__ - INFO - 🔧 Logging desde main
+2025-06-11 19:01:38 - __main__ - INFO - 🔧 Logging desde main
+2025-06-11 19:01:38 - ETL.extract - INFO - 📦 loading data from extract.py
+2025-06-11 19:05:36 - __main__ - INFO - 🔧 Logging desde main
+2025-06-11 19:05:36 - __main__ - INFO - 🔧 Logging desde main
+2025-06-11 19:05:36 - ETL.extract - INFO - 📦 loading data from extract.py
+2025-06-11 19:05:46 - __main__ - INFO - 🔧 Logging desde main
+2025-06-11 19:05:46 - __main__ - INFO - 🔧 Logging desde main
+2025-06-11 19:05:46 - ETL.extract - INFO - 📦 loading data from extract.py
+2025-06-11 19:05:58 - __main__ - INFO - 🔧 Logging desde main
+2025-06-11 19:05:58 - __main__ - INFO - 🔧 Logging desde main
+2025-06-11 19:05:58 - ETL.extract - INFO - 📦 loading data from extract.py
+2025-06-11 19:06:25 - __main__ - INFO - 🔧 Logging desde main
+2025-06-11 19:06:25 - __main__ - INFO - 🔧 Logging desde main
+2025-06-11 19:06:25 - ETL.extract - INFO - 📦 loading data from extract.py
+2025-06-11 19:06:42 - root - INFO - 🔧 Logging desde main
+2025-06-11 19:06:42 - ETL.extract - INFO - 📦 loading data from extract.py
+2025-06-11 19:06:55 - root - INFO - 🔧 Logging desde main
+2025-06-11 19:06:55 - ETL.extract - INFO - 📦 loading data from extract.py
+2025-06-11 19:08:06 - root - INFO - 🔧 Logging desde main
+2025-06-11 19:08:06 - ETL.extract - INFO - 📦 loading data from extract.py
+2025-06-11 19:09:57 - ETL.extract - INFO - 📦 loading data from extract.py
+2025-06-11 19:10:20 - root - INFO - 🔧 Logging desde main
+2025-06-11 19:49:12 - ETL.extract_data - INFO - ✅ Loaded cards_data.csv with 6146 records
+2025-06-11 19:51:38 - ETL.extract_data - INFO - ✅ Loaded cards_data.csv with 6146 records
+2025-06-11 19:53:31 - ETL.extract_data - INFO - ✅ Loaded cards_data.csv with 6146 records
+2025-06-11 19:54:30 - ETL.extract_data - ERROR - ❌ Error loading cards_data.csv: [Errno 2] No such file or directory: 'C:\\Users\\jimmy\\Documents\\Data Projects\\Project\\Financial Transactions Project\\data\\cards_dat.csv'
+2025-06-11 19:57:34 - ETL.extract_data - ERROR - ❌ Error loading cards_data.csv: [Errno 2] No such file or directory: 'C:\\Users\\jimmy\\Documents\\Data Projects\\Project\\Financial Transactions Project\\data\\cards_dat.csv'
+2025-06-11 19:58:23 - ETL.extract_data - INFO - ✅ Loaded cards_data.csv with 6146 records
+2025-06-11 21:24:11 - ETL.extract_data - INFO - ✅ Loaded cards_data.csv with 6146 records
+2025-06-11 21:25:21 - ETL.extract_data - INFO - ✅ Loaded cards_data.csv with 6146 records
+2025-06-11 21:25:21 - ETL.extract_data - INFO - ✅ Loaded users_data.csv with 2000 records
+2025-06-11 21:27:23 - ETL.extract_data - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-11 21:27:23 - ETL.extract_data - INFO - ✅ Extracted users_data.csv with 2000 records
+2025-06-11 21:28:16 - ETL.extract_data - INFO - ✅ Extracted transactions_data.csv with 13305915 records
+2025-06-11 22:26:00 - ETL.extract_data - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-11 22:26:00 - ETL.extract_data - INFO - ✅ Extracted users_data.csv with 2000 records
+2025-06-11 22:26:23 - ETL.extract_data - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-11 22:26:23 - ETL.extract_data - INFO - ✅ Extracted users_data.csv with 2000 records
+2025-06-11 22:27:10 - ETL.extract_data - INFO - ✅ Extracted transactions_data.csv with 13305915 records
+2025-06-12 10:55:13 - ETL.extract_data - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-12 10:55:40 - ETL.extract_data - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-12 11:00:01 - ETL.extract_data - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-12 11:00:43 - ETL.extract_data - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-12 11:14:23 - ETL.extract_data - INFO - ✅ Extracted users_data.csv with 2000 records
+2025-06-12 12:06:01 - root - INFO - No duplicate records found in critical columns ['id', 'client_id'] in cards data.
+2025-06-12 12:08:55 - root - WARNING - There are 245 duplicate records in the cards data.
+2025-06-12 18:54:11 - root - INFO - No duplicate records found in the data based on columns ['id', 'client_id'].
+2025-06-12 19:04:29 - root - INFO - No missing values found in the data.
+2025-06-12 20:16:56 - ETL.extract_data - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-12 20:24:37 - root - INFO - Removed columns ['client_id', 'card_number', 'cvv'] from CARDS data.
+2025-06-12 20:24:44 - root - INFO - Removed columns ['client_id', 'card_number', 'cvv'] from CARDS data.
+2025-06-12 20:28:47 - root - INFO - Removed columns ['client_id', 'card_number', 'cvv'] from CARDS data.
+2025-06-12 20:29:10 - root - INFO - Removed columns ['client_id', 'card_number', 'cvv'] from CARDS data.
+2025-06-12 20:29:36 - ETL.extract_data - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-12 20:29:37 - root - INFO - Removed columns ['client_id', 'card_number', 'cvv'] from CARDS data.
+2025-06-12 20:30:17 - root - INFO - Removed columns ['client_id', 'card_number', 'cvv'] from CARDS data.
+2025-06-12 20:36:09 - root - INFO - Removed columns ['client_id', 'card_number', 'cvv'] from CARDS data.
+2025-06-12 20:38:50 - ETL.extract_data - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-12 20:39:20 - root - INFO - Removed columns ['client_id', 'card_number', 'cvv'] from CARDS data.
+2025-06-12 22:16:29 - ETL.extract_data - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-13 12:05:38 - __main__ - INFO - Successfully created database connection engine.
+2025-06-16 18:48:59 - ETL.extract_data - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-16 19:12:59 - __main__ - INFO - Removed columns ['client_id', 'card_number', 'cvv'] from CARDS data.
+2025-06-16 19:13:38 - ETL.extract_data - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-16 19:13:38 - root - INFO - Removed columns ['client_id', 'card_number', 'cvv'] from CARDS data.
+2025-06-16 19:13:38 - __main__ - INFO - Successfully created database connection engine.
+2025-06-16 19:20:05 - __main__ - INFO - Removed columns ['client_id', 'card_number', 'cvv'] from CARDS data.
+2025-06-16 19:39:14 - ETL.extract_data - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-16 19:39:14 - root - INFO - Removed columns ['client_id', 'card_number', 'cvv'] from CARDS data.
+2025-06-16 19:41:32 - ETL.extract_data - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-16 19:41:32 - root - INFO - Removed columns ['client_id', 'card_number', 'cvv'] from CARDS data.
+2025-06-16 19:47:22 - ETL.extract_data - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-16 19:47:22 - root - INFO - Removed columns ['client_id', 'card_number', 'cvv'] from CARDS data.
+2025-06-16 19:49:21 - ETL.extract_data - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-16 19:49:21 - root - INFO - Removed columns ['client_id', 'card_number', 'cvv'] from CARDS data.
+2025-06-16 19:59:34 - ETL.extract_data - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-16 19:59:35 - root - INFO - Removed columns ['client_id', 'card_number', 'cvv'] from CARDS data.
+2025-06-16 20:11:26 - ETL.extract_data - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-16 20:11:26 - root - INFO - Removed columns ['client_id', 'card_number', 'cvv'] from CARDS data.
+2025-06-16 20:16:34 - ETL.extract_data - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-16 20:23:14 - ETL.extract_data - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-16 20:23:14 - root - INFO - Removed columns ['client_id', 'card_number', 'cvv'] from CARDS data.
+2025-06-16 20:23:57 - ETL.extract_data - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-16 20:23:57 - root - INFO - Removed columns ['client_id', 'card_number', 'cvv'] from CARDS data.
+2025-06-16 20:42:47 - ETL.extract_data - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-16 20:42:47 - root - INFO - Removed columns ['client_id', 'card_number', 'cvv'] from CARDS data.
+2025-06-16 20:43:05 - __main__ - INFO - Successfully created database connection engine.
+2025-06-16 20:43:30 - __main__ - INFO - Successfully created database connection engine.
+2025-06-16 20:44:02 - __main__ - INFO - Successfully created database connection engine.
+2025-06-16 20:55:38 - __main__ - INFO - Successfully created database connection engine.
+2025-06-16 20:58:52 - __main__ - INFO - Successfully created database connection engine.
+2025-06-16 20:59:32 - __main__ - INFO - Successfully created database connection engine.
+2025-06-16 21:00:59 - __main__ - INFO - Successfully created database connection engine.
+2025-06-16 21:01:58 - __main__ - INFO - Successfully created database connection engine.
+2025-06-16 21:03:01 - __main__ - INFO - Successfully created database connection engine.
+2025-06-16 21:04:39 - __main__ - INFO - Successfully created database connection engine.
+2025-06-16 21:05:03 - __main__ - INFO - Successfully created database connection engine.
+2025-06-16 21:10:37 - __main__ - INFO - Successfully created database connection engine.
+2025-06-16 21:11:00 - __main__ - INFO - Successfully created database connection engine.
+2025-06-16 21:12:06 - __main__ - INFO - Successfully created database connection engine.
+2025-06-16 21:13:00 - __main__ - INFO - Successfully created database connection engine.
+2025-06-16 21:13:11 - __main__ - INFO - Successfully created database connection engine.
+2025-06-16 21:13:22 - __main__ - INFO - Successfully created database connection engine.
+2025-06-16 21:16:15 - __main__ - INFO - Successfully created database connection engine.
+2025-06-16 21:18:46 - __main__ - INFO - Successfully created database connection engine.
+2025-06-16 21:21:35 - __main__ - INFO - Successfully created database connection engine.
+2025-06-16 21:24:38 - __main__ - INFO - Successfully created database connection engine.
+2025-06-16 21:24:58 - __main__ - INFO - Successfully created database connection engine.
+2025-06-16 21:26:51 - ETL.extract_data - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-17 13:34:56 - __main__ - INFO - Successfully created database connection engine.
+2025-06-17 13:37:17 - ETL.extract_data - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-17 13:37:17 - root - INFO - Removed columns ['client_id', 'card_number', 'cvv'] from CARDS data.
+2025-06-17 13:37:17 - __main__ - INFO - Successfully created database connection engine.
+2025-06-17 13:39:21 - __main__ - INFO - Successfully created database connection engine.
+2025-06-17 13:41:43 - __main__ - INFO - transform datatypes in specific colums ok
+2025-06-17 13:42:35 - __main__ - INFO - Successfully created database connection engine.
+2025-06-17 13:43:05 - __main__ - INFO - Successfully created database connection engine.
+2025-06-17 13:43:24 - __main__ - INFO - Successfully created database connection engine.
+2025-06-17 13:45:09 - __main__ - INFO - Successfully created database connection engine.
+2025-06-17 14:58:03 - __main__ - INFO - Successfully created database connection engine.
+2025-06-17 15:03:48 - __main__ - INFO - Successfully created database connection engine.
+2025-06-17 15:04:31 - __main__ - INFO - Successfully created database connection engine.
+2025-06-17 15:08:45 - __main__ - INFO - Successfully created database connection engine.
+2025-06-17 15:14:32 - __main__ - INFO - Successfully loaded data into table 'financial.dim_card'.
+2025-06-17 17:43:32 - ETL.load_data - INFO - Successfully loaded data into table 'financial.dim_card'.
+2025-06-17 17:46:47 - ETL.load_data - INFO - Successfully loaded data into table 'financial.dim_card'.
+2025-06-17 17:56:32 - ETL.load_data - INFO - Successfully loaded data into table 'financial.dim_card'.
+2025-06-17 18:01:45 - ETL.load_data - INFO - Successfully loaded data into table 'financial.dim_card'. 6146 rows and 10 columns
+2025-06-19 13:59:52 - __main__ - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 12:28:59 - ETL.extract_data - ERROR - ❌ Error extracting cards_data.csv: [Errno 2] No such file or directory: '/opt/airflow/data/cards_data.csv'
+2025-06-26 12:31:44 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 12:31:51 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 12:34:22 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 12:36:46 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 12:36:58 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 12:38:09 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 14:15:06 - root - ERROR - An error occurred while transforming CARDS data: 'card_id'
+2025-06-26 14:15:51 - root - ERROR - An error occurred while transforming CARDS data: 'account_open_date'
+2025-06-26 14:16:26 - root - INFO - Removed columns ['client_id', 'card_number', 'cvv'] from CARDS data.
+2025-06-26 16:55:54 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 16:57:13 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 16:58:34 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 16:59:22 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 17:45:34 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 17:45:38 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 17:47:08 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 17:49:21 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 17:50:45 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 17:51:34 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 17:52:49 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 17:55:18 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 17:55:47 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 17:55:56 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 17:56:31 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 17:57:35 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 17:57:58 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 17:58:35 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 17:59:27 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 18:00:01 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 18:01:39 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 18:02:13 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 18:02:24 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 18:02:33 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 18:04:10 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 18:04:17 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 18:04:29 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 18:04:52 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 18:04:59 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 18:06:55 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 18:07:29 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 18:15:05 - root - INFO - ✅ Extracted cards_data.csv with 6146 records
+2025-06-26 18:15:28 - root - INFO - ✅ Extracted cards_data.csv with 6146 records

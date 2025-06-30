@@ -1,0 +1,30 @@
+[2025-06-26T20:38:31.621+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: cards_etl.etl_cards_task manual__2025-06-26T20:38:28.791923+00:00 [queued]>
+[2025-06-26T20:38:31.646+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: cards_etl.etl_cards_task manual__2025-06-26T20:38:28.791923+00:00 [queued]>
+[2025-06-26T20:38:31.647+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-06-26T20:38:31.747+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): etl_cards_task> on 2025-06-26 20:38:28.791923+00:00
+[2025-06-26T20:38:31.767+0000] {standard_task_runner.py:60} INFO - Started process 6812 to run task
+[2025-06-26T20:38:31.775+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'cards_etl', 'etl_cards_task', 'manual__2025-06-26T20:38:28.791923+00:00', '--job-id', '73', '--raw', '--subdir', 'DAGS_FOLDER/etl_cards_dag.py', '--cfg-path', '/tmp/tmpu1q5_1be']
+[2025-06-26T20:38:31.786+0000] {standard_task_runner.py:88} INFO - Job 73: Subtask etl_cards_task
+[2025-06-26T20:38:31.911+0000] {task_command.py:423} INFO - Running <TaskInstance: cards_etl.etl_cards_task manual__2025-06-26T20:38:28.791923+00:00 [running]> on host 65da94c758f2
+[2025-06-26T20:38:32.950+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='jimmy' AIRFLOW_CTX_DAG_ID='cards_etl' AIRFLOW_CTX_TASK_ID='etl_cards_task' AIRFLOW_CTX_EXECUTION_DATE='2025-06-26T20:38:28.791923+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-06-26T20:38:28.791923+00:00'
+[2025-06-26T20:38:32.953+0000] {etl_cards_dag.py:22} INFO - Starting ETL for cards
+[2025-06-26T20:38:33.034+0000] {ETL_dim_card.py:21} INFO - ✅ Extracted cards_data.csv with 6146 records
+[2025-06-26T20:38:33.036+0000] {ETL_dim_card.py:36} INFO - Starting transformation of CARDS data.
+[2025-06-26T20:38:33.113+0000] {ETL_dim_card.py:63} ERROR - An error occurred while transforming CARDS data: name 'datetime' is not defined
+[2025-06-26T20:38:33.114+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/etl_cards_dag.py", line 24, in my_etl_task
+    cards_df_clean = etl_dim_card.cards_transform(cards_df)
+  File "/opt/airflow/ETL/ETL_dim_card.py", line 57, in cards_transform
+    df_cleaned['load_timestamp'] = datetime.now()
+NameError: name 'datetime' is not defined
+[2025-06-26T20:38:33.216+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=cards_etl, task_id=etl_cards_task, execution_date=20250626T203828, start_date=20250626T203831, end_date=20250626T203833
+[2025-06-26T20:38:33.244+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 73 for task etl_cards_task (name 'datetime' is not defined; 6812)
+[2025-06-26T20:38:33.282+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-06-26T20:38:33.319+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

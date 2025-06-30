@@ -4,19 +4,26 @@ CREATE DATABASE FinancialDW;
 
 CREATE SCHEMA financial;
 
-USE FinancialDW
+-- Create the financial.dim_card table
+-- This table will store information about credit cards, including their attributes and metadata.
+USE FinancialDW;
 
-CREATE TABLE financial.dim_card(
-    "card_id" INT NOT NULL,
-    "card_brand" INT NOT NULL,
-    "card_type" INT NOT NULL,
-    "has_chip" BIT NOT NULL,
-    "num_cards_issued" INT NOT NULL,
-    "credit_limit" FLOAT(53) NOT NULL,
-    "acct_open_date" VARCHAR(255) NOT NULL,
-    "year_pin_last_changed" INT NOT NULL,
-    "card_on_dark_web" BIT NOT NULL,
-    "expires" VARCHAR(10) NOT NULL
-);
+IF OBJECT_ID('financial.dim_card', 'U') IS NULL
+BEGIN
+  CREATE TABLE financial.dim_card (
+    card_id INT PRIMARY KEY,
+    card_brand VARCHAR(50),
+    card_type VARCHAR(50),
+    credit_limit DECIMAL(18,2),
+    has_chip VARCHAR(3),
+    num_cards_issued INT,
+    card_on_dark_web VARCHAR(3),
+    expires DATE,    
+    account_open_date DATE,
+    year_pin_last_changed SMALLINT,
+    -- Metadata columns
+    load_timestamp DATETIME2 DEFAULT SYSDATETIME() NOT NULL
+  );
+END;
 
 

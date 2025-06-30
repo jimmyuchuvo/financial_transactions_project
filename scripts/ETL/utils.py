@@ -5,6 +5,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 import ETL.config as config
 
+
 # Define a function to set up logging for the ETL process
 def setup_logging(
                   log_dir=r"C:\Users\jimmy\Documents\Data Projects\Project\Financial Transactions Project\logs", 
@@ -50,23 +51,13 @@ def setup_logging(
 
     return logger
 
-# define a function to create the sqlserver connection string
-def create_sqlserver_connection_string(
-    server: str, 
-    database: str, 
-    username: str, 
-    password: str
-) -> str:
-    """
-    Create a SQL Server connection string.
-    
-    Args:
-        server (str): The name or IP address of the SQL Server.
-        database (str): The name of the database to connect to.
-        username (str): The username for authentication.
-        password (str): The password for authentication.
-        
-    Returns:
-        str: A formatted connection string for SQL Server.
-    """
-    return f"mssql+pyodbc://{username}:{password}@{server}/{database}?driver=ODBC+Driver+17+for+SQL+Server"
+#create database sql server connection
+import pandas as pd
+#import logging # imported above
+from sqlalchemy.engine import Engine
+from sqlalchemy.engine.url import URL
+from sqlalchemy import create_engine
+#import ETL.config as config # imported above
+
+logger = logging.getLogger(__name__)
+
