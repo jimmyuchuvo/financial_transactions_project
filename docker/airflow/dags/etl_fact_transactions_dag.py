@@ -1,7 +1,6 @@
-#cards ETL DAG
+#transacions ETL DAG
 import sys
 sys.path.append('/opt/airflow')
-
 
 import logging
 from datetime import datetime, timedelta
@@ -12,20 +11,19 @@ from airflow.models import Variable
 from airflow.utils.task_group import TaskGroup
 import ETL.config as config
 import ETL.extract_data as extract
-import ETL.transform_dim_card as transform
+import ETL.transform_fact_transactions as transform
 import ETL.load_data as load
-
 
 logger = logging.getLogger(__name__)
 
-# ETL function for task
 def my_etl_task():
-    logger.info("Starting ETL for cards")
-    cards_df = extract.extract_data(config.CARDS_FILE, 'CARDS')
-    cards_df_clean = transform.cards_transform(cards_df)
+    
+    logger.info('Starting ETL for TRANSACTIONS data')
+    transactions_df = extract.extract_data(config.FILTERED_TRANSACTIONS_FILE,'TRANSACTIONS')
+    transactions_df = transform.transform_fact_transactions(transactions_df,'TRANSACTIONS')
     engine = load.create_database_connection()
-    load.load_dataframe_to_sql(cards_df_clean,'dim_card',engine,'financial')
-    logger.info("Finished ETL for cards")
+    load.load_dataframe_to_sql(transactions_df, 'fact_transactions', engine, 'financial')
+    logger.info('Finished ETL for TRANSACTIONS data')
 
 # defining default arguments for the DAG
 default_args = {
@@ -34,26 +32,22 @@ default_args = {
     'email_on_failure': False,
     'email_on_retry': False,
     'retries': 0,
-    'retry_delay': timedelta(seconds=20),
-}
+    'retry_delay': timedelta(seconds=20),}
 
 with DAG(
-    'dim_card_etl',
+    'fact_transactions_etl',
     default_args=default_args,
-    description='ETL process for CARDS data',
-    schedule_interval= '@daily',  
+    description='ETL process for TRANSACTIONS data',
+    schedule_interval='@daily',  
     start_date=days_ago(1),
     catchup=False,
-    tags=['financial', 'etl', 'CARDS'],
+    tags=['TRANSACTIONS','financial', 'etl' ],
     max_active_runs=1,
 ) as dag:
 
     etl_task = PythonOperator(
-        task_id='etl_cards_task',
+        task_id='etl_transactions_task',
         python_callable=my_etl_task,
-        doc_md='✅Complete ETL process for cards data'
+        doc_md='✅Complete ETL process for TRANSACTIONS data'
     )
-
-
-
 
