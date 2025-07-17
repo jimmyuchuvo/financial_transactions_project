@@ -51,13 +51,5 @@ def setup_logging(
 
     return logger
 
-#create database sql server connection
-import pandas as pd
-#import logging # imported above
-from sqlalchemy.engine import Engine
-from sqlalchemy.engine.url import URL
-from sqlalchemy import create_engine
-#import ETL.config as config # imported above
 
-logger = logging.getLogger(__name__)
 

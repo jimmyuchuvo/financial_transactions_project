@@ -30,7 +30,7 @@ def create_database_connection() -> Engine:
                 #"authentication": "ActiveDirectoryIntegrated",
             },
         )
-        engine = create_engine(database_connection)
+        engine = create_engine(database_connection, fast_executemany=True)
         logger.info('✅Successfully created database connection engine.')
         return engine
 
