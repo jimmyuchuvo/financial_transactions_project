@@ -14,29 +14,37 @@ GO
 -- Assign .ndf files to physical filegroups for storage segregation
 ALTER DATABASE financialDW 
 ADD FILE (
-  NAME = P_2017, 
-  FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL16.SQLEXPRESS\MSSQL\DATA\P_2017.ndf'
+    NAME = P_2017,
+    FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL17.SQLEXPRESS01\MSSQL\DATA\P_2017.ndf',
+    SIZE = 100MB,
+    FILEGROWTH = 50MB
 ) TO FILEGROUP FG_2017;
 
 ALTER DATABASE financialDW 
 ADD FILE (
-  NAME = P_2018, 
-  FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL16.SQLEXPRESS\MSSQL\DATA\P_2018.ndf'
+    NAME = P_2018,
+    FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL17.SQLEXPRESS01\MSSQL\DATA\P_2018.ndf',
+    SIZE = 100MB,
+    FILEGROWTH = 50MB
 ) TO FILEGROUP FG_2018;
 
 ALTER DATABASE financialDW 
 ADD FILE (
-  NAME = P_2019, 
-  FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL16.SQLEXPRESS\MSSQL\DATA\P_2019.ndf'
+    NAME = P_2019,
+    FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL17.SQLEXPRESS01\MSSQL\DATA\P_2019.ndf',
+    SIZE = 100MB,
+    FILEGROWTH = 50MB
 ) TO FILEGROUP FG_2019;
-GO
 
 ALTER DATABASE financialDW 
 ADD FILE (
-  NAME = P_FUTURE, 
-  FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL16.SQLEXPRESS\MSSQL\DATA\P_FUTURE.ndf'
+    NAME = P_FUTURE,
+    FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL17.SQLEXPRESS01\MSSQL\DATA\P_FUTURE.ndf',
+    SIZE = 100MB,
+    FILEGROWTH = 50MB
 ) TO FILEGROUP FG_FUTURE;
 GO
+
 
 -- =========================================================================
 -- Step 3️⃣: Create Partition Function
@@ -71,3 +79,4 @@ FROM sys.partition_schemes ps
 JOIN sys.partition_functions pf ON ps.function_id = pf.function_id
 JOIN sys.destination_data_spaces ds ON ps.data_space_id = ds.partition_scheme_id
 JOIN sys.filegroups fg ON ds.data_space_id = fg.data_space_id;
+

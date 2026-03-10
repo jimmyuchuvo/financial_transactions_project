@@ -1,42 +1,64 @@
---Create Database, schema and tables 
+-- =========================================================================
+-- Step 1️⃣: Create Database and Schema
+-- =========================================================================
+-- Create the main database and schema for the data warehouse
 
-CREATE DATABASE FinancialDW;
-
-CREATE SCHEMA financial;
-
--- Create the financial.dim_card table
--- This table will store information about credit cards, including their attributes and metadata.
+IF DB_ID('FinancialDW') IS NULL
+    CREATE DATABASE FinancialDW;
 GO
-  USE FinancialDW;
 
-  IF OBJECT_ID('financial.dim_card', 'U') IS NULL
-  BEGIN
-    CREATE TABLE financial.dim_card (
-      card_id INT PRIMARY KEY,
-      card_brand VARCHAR(50),
-      card_type VARCHAR(50),
-      credit_limit DECIMAL(18,2),
-      has_chip VARCHAR(3),
-      num_cards_issued INT,
-      card_on_dark_web VARCHAR(3),
-      expires DATE,    
-      account_open_date DATE,
-      year_pin_last_changed SMALLINT,
-      -- Metadata columns
-      dw_load_timestamp DATETIME2 DEFAULT SYSDATETIME() NOT NULL
-    );
-  END;
--- Create the financial.dim_users table
--- This table will store user information, including demographics, financial status, and metadata.
+USE FinancialDW;
 GO
-USE FinancialDW
-BEGIN
-  IF OBJECT_ID('financial.dim_users', 'U') IS NOT NULL
-  BEGIN
-      DROP TABLE financial.dim_users;
-  END;
-  CREATE TABLE financial.dim_users (
-    user_id INT PRIMARY KEY,
+
+IF SCHEMA_ID('financial') IS NULL
+    EXEC('CREATE SCHEMA financial');
+GO
+
+-- =========================================================================
+-- Step 2️⃣: Create Dimension Tables
+-- =========================================================================
+
+-- ---------------------------------------------
+-- Table: financial.dim_card
+-- ---------------------------------------------
+-- Stores credit card information such as brand, type, and limits
+-- Drop the table only if it exists
+
+USE FinancialDW;
+GO
+    DROP TABLE IF EXISTS financial.dim_card;
+GO
+
+CREATE TABLE financial.dim_card (
+    card_key INT NOT NULL IDENTITY(1,1),
+    card_id INT NOT NULL UNIQUE,
+    user_id INT,
+    card_brand VARCHAR(50),
+    card_type VARCHAR(50),
+    credit_limit DECIMAL(18,2),
+    has_chip VARCHAR(20),
+    expires DATE,
+    account_open_date DATE,
+    year_pin_last_changed INT,
+    num_cards_issued INT,
+    card_on_dark_web VARCHAR(10),
+    -- Metadata
+    dw_load_timestamp DATETIME2 DEFAULT SYSDATETIME() NOT NULL
+);
+GO
+
+-- ---------------------------------------------
+-- Table: financial.dim_users
+-- ---------------------------------------------
+-- Stores user demographics and financial metrics
+USE FinancialDW;
+GO
+    DROP TABLE IF EXISTS financial.dim_users;
+GO
+
+CREATE TABLE financial.dim_users (
+    user_key INT NOT NULL  IDENTITY(1,1),
+    user_id INT NOT NULL UNIQUE,
     gender VARCHAR(10),
     current_age INT,
     birth_year SMALLINT,
@@ -50,85 +72,83 @@ BEGIN
     user_address VARCHAR(100),
     latitude FLOAT,
     longitude FLOAT,
-    -- Metadata columns
+    -- Metadata
     dw_load_timestamp DATETIME2 DEFAULT SYSDATETIME() NOT NULL
-  )
-END;
-
--- Create the financial.dim_merchant table
+);
 GO
-USE FinancialDW
-BEGIN
-  IF OBJECT_ID('financial.dim_merchant', 'U') IS NOT NULL
-  BEGIN
-      DROP TABLE financial.dim_merchant;
-  END;
 
-  CREATE TABLE financial.dim_merchant (
-    merchant_key INT PRIMARY KEY,
-    merchant_id INT,
+-- ---------------------------------------------
+-- Table: financial.dim_merchant
+-- ---------------------------------------------
+-- Stores merchant location and category info
+USE FinancialDW;
+GO
+    DROP TABLE IF EXISTS financial.dim_merchant;
+GO
+
+CREATE TABLE financial.dim_merchant (
+    merchant_key INT NOT NULL IDENTITY(1,1),
+    merchant_id INT NOT NULL UNIQUE,
     merchant_state VARCHAR(100),
     merchant_city VARCHAR(100),
     merchant_zip INT,
     mcc INT,
     mcc_description VARCHAR(255),
-    -- Metadata columns
-    dw_load_timestamp DATETIME2 DEFAULT SYSDATETIME() NOT NULL    
-  )
-END;
+    -- Metadata
+    dw_load_timestamp DATETIME2 DEFAULT SYSDATETIME() NOT NULL
+);
+GO
 
- -- Create the financial.dim_date table
+-- ---------------------------------------------
+-- Table: financial.dim_date
+-- ---------------------------------------------
+-- Stores calendar-related details for time-based analysis
 USE FinancialDW;
-BEGIN
--- Drop the table if it exists
-  IF OBJECT_ID('financial.dim_date', 'U') IS NOT NULL
-  BEGIN
-      DROP TABLE financial.dim_date;
-  END;
+GO
+DROP TABLE  IF EXISTS financial.dim_date;
+GO
 
-  -- Create the table
-  CREATE TABLE financial.dim_date (
-      date_key BIGINT PRIMARY KEY,
-      year INT,
-      quarter INT,
-      month INT,
-      month_name VARCHAR(50),
-      day INT,
-      day_name VARCHAR(50),
-      day_of_week INT,
-      day_type VARCHAR(20),
-      hour INT,
-      minute_block VARCHAR(20),
-      -- Metadata columns
-      dw_load_timestamp DATETIME2 DEFAULT SYSDATETIME() NOT NULL    
-  );
+CREATE TABLE financial.dim_date (
+    date_key BIGINT NOT NULL IDENTITY(1,1),
+    year INT,
+    quarter INT,
+    month INT,
+    month_name VARCHAR(50),
+    day INT,
+    day_name VARCHAR(50),
+    day_of_week INT,
+    day_type VARCHAR(20),
+    hour INT,
+    minute_block VARCHAR(20),
+    -- Metadata
+    dw_load_timestamp DATETIME2 DEFAULT SYSDATETIME() NOT NULL
+);
+GO
 
-END
- 
+-- =========================================================================
+-- Step 3️⃣: Create Fact Table
+-- =========================================================================
 
---create financial.fact_transations table
+-- ---------------------------------------------
+-- Table: financial.fact_transactions
+-- ---------------------------------------------
+-- Stores transactional records and foreign keys to dimension tables
+-- Data is partitioned by transaction_date for performance
 USE FinancialDW;
-BEGIN
--- Drop the table if it exists
-  IF OBJECT_ID('financial.fact_transactions', 'U') IS NOT NULL
-  BEGIN
-      DROP TABLE financial.fact_transactions;
-  END;
-
-  -- Create the table
-  CREATE TABLE financial.fact_transactions (
-      transaction_id INT PRIMARY KEY,
-      transaction_date DATETIME,
-      user_id INT,
-      card_id INT,
-      date_key BIGINT,
-      merchant_key INT,
-      amount DECIMAL(10, 2),
-      card_entry_method VARCHAR(50),
-      transaction_error VARCHAR(100),
-      -- Metadata columns
-      dw_load_timestamp DATETIME2 DEFAULT SYSDATETIME() NOT NULL    
-  );
-
-END
- 
+GO
+DROP TABLE IF EXISTS financial.fact_transactions;
+GO
+CREATE TABLE financial.fact_transactions (
+    transaction_id INT NOT NULL UNIQUE,
+    transaction_date DATETIME,
+    date_key BIGINT NOT NULL,
+    user_key INT NOT NULL,
+    card_key INT NOT NULL,
+    merchant_key INT NOT NULL,
+    amount DECIMAL(10, 2),
+    card_entry_method VARCHAR(50),
+    transaction_error VARCHAR(100),
+    -- Metadata
+    dw_load_timestamp DATETIME2 DEFAULT SYSDATETIME() NOT NULL
+) ON scheme_partition_by_year (transaction_date);
+GO
