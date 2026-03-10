@@ -2,6 +2,7 @@ FROM apache/airflow:2.8.1-python3.8
 
 USER root
 
+# Install system dependencies and Microsoft ODBC Driver
 RUN apt-get update && apt-get install -y \
     curl \
     gnupg \
@@ -12,6 +13,8 @@ RUN apt-get update && apt-get install -y \
     python3-dev \
     freetds-dev \
     unixodbc-dev \
+    libffi-dev \
+    libssl-dev \
     && curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
     && curl https://packages.microsoft.com/config/debian/11/prod.list > /etc/apt/sources.list.d/mssql-release.list \
     && apt-get update \
@@ -21,11 +24,29 @@ RUN apt-get update && apt-get install -y \
 
 USER airflow
 
-# Install core packages first
+# Install Python dependencies AFTER system build tools are installed
 RUN pip install --no-cache-dir \
     pyodbc==4.0.39 \
-    pandas==2.0.3
+    pandas==2.0.3 \
+    apache-airflow-providers-microsoft-mssql==3.9.1
 
-# Try to install apache-airflow-providers-microsoft-mssql without pymssql dependency
-RUN pip install --no-cache-dir apache-airflow-providers-microsoft-mssql==3.4.0 || \
-    pip install --no-cache-dir --no-deps apache-airflow-providers-microsoft-mssql==3.4.0
+USER airflow
+
+USER root
+
+RUN echo "[ODBC Driver 18 for SQL Server]\n\
+Description=Microsoft ODBC Driver 18 for SQL Server\n\
+Driver=/opt/microsoft/msodbcsql18/lib64/libmsodbcsql-18.so\n\
+UsageCount=1" > /etc/odbcinst.ini
+
+RUN echo "[my_mssql_dsn]\n\
+Driver=ODBC Driver 18 for SQL Server\n\
+Server=host.docker.internal\n\
+Database=financialDW\n\
+Port=1433\n\
+UID=sa\n\
+PWD=Enero1072.\n\
+Trusted_Connection=No" > /etc/odbc.ini
+
+USER airflow
+RUN pip install apache-airflow[odbc] apache-airflow-providers-odbc

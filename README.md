@@ -163,12 +163,12 @@ unzip transactions-fraud-datasets.zip -d data/
 
 ### 4. Transformation & Loading
 - Python ETL scripts transform raw data into dimension and fact tables.
-- Data is loaded into SQL Server using Python (pyodbc or similar) or via Airflow tasks.
+- Data is loaded into SQL Server using Python
 - Partitioning and indexing strategies optimize performance.
 
 ### 5. Data Quality & Validation
 - SQL scripts in `sql/` check for duplicates, nulls, referential integrity, and business rules.
-- Airflow tasks can fail or alert on data quality issues.
+
 
 ### 6. Dimensional Modeling (Star Schema)
 - The warehouse follows a star schema: one fact table (transactions) and several dimensions (cards, users, merchants, date).
@@ -193,16 +193,7 @@ unzip transactions-fraud-datasets.zip -d data/
 
 ---
 
-## 🤝 Contributing
-Contributions are welcome! Please fork the repo, create a feature branch, and submit a pull request.
-
----
 
 ## 📜 License
 This project is licensed under the MIT License.
 
----
-
-## 📞 Contact
-- GitHub Issues: [Open an issue](https://github.com/your-repo/issues)
-- Email: your.email@example.com
