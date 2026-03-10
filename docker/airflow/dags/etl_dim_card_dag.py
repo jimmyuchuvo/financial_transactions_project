@@ -2,57 +2,68 @@
 import sys
 sys.path.append('/opt/airflow')
 
-
 import logging
-from datetime import datetime, timedelta
-from airflow import DAG
-from airflow.operators.python import PythonOperator
+from datetime import timedelta
+from airflow.decorators import (dag, task)
 from airflow.utils.dates import days_ago
-from airflow.models import Variable
-from airflow.utils.task_group import TaskGroup
+
 import ETL.config as config
 import ETL.extract_data as extract
 import ETL.transform_dim_card as transform
 import ETL.load_data as load
 
-
 logger = logging.getLogger(__name__)
 
-# ETL function for task
-def my_etl_task():
-    logger.info("Starting ETL for cards")
-    cards_df = extract.extract_data(config.CARDS_FILE, 'CARDS')
-    cards_df_clean = transform.cards_transform(cards_df)
-    engine = load.create_database_connection()
-    load.load_dataframe_to_sql(cards_df_clean,'dim_card',engine,'financial')
-    logger.info("Finished ETL for cards")
-
-# defining default arguments for the DAG
 default_args = {
     'owner': 'jimmy',
     'depends_on_past': False,
     'email_on_failure': False,
     'email_on_retry': False,
-    'retries': 0,
-    'retry_delay': timedelta(seconds=20),
+    'retries': 1,
+    'retry_delay': timedelta(seconds=30),
 }
 
-with DAG(
-    'dim_card_etl',
-    default_args=default_args,
-    description='ETL process for CARDS data',
-    schedule_interval= '@daily',  
+@dag(
+    schedule_interval='@daily',
     start_date=days_ago(1),
     catchup=False,
+    default_args=default_args,
     tags=['financial', 'etl', 'CARDS'],
-    max_active_runs=1,
-) as dag:
+    description='ETL process for CARDS data',
+    max_active_runs=1
+)
+def dim_card_etl():
 
-    etl_task = PythonOperator(
-        task_id='etl_cards_task',
-        python_callable=my_etl_task,
-        doc_md='✅Complete ETL process for cards data'
+    @task(
+        execution_timeout=timedelta(hours=0.5),
+        doc_md='💳This DAG loads card dimension data.'
     )
+    def etl_cards_task():
+        logger.info("Starting ETL for cards")
+
+        # EXTRACT
+        cards_df = extract.extract_data(config.CARDS_FILE, 'CARDS')
+        logger.info(f"Extracted {len(cards_df)} rows")
+
+        # TRANSFORM
+        cards_df_clean = transform.cards_transform(cards_df)
+        logger.info(f"Transformed {len(cards_df_clean)} rows")
+
+        # LOAD
+        engine = load.create_database_connection()
+        load.load_dataframe_to_sql(
+            cards_df_clean,
+            'dim_card',
+            engine,
+            'financial'
+        )
+
+        logger.info("Finished ETL for cards")
+
+    etl_cards_task()
+
+
+dim_card_etl()
 
 
 
