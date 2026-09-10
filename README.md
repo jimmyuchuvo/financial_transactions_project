@@ -113,7 +113,7 @@ This project implements a robust, end-to-end data warehouse pipeline for financi
 
 ### 1. Clone the Repository
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/jimmyuchuvo/financial_transactions_project
 cd "Financial Transactions Project"
 ```
 
