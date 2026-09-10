@@ -109,18 +109,42 @@ DROP TABLE  IF EXISTS financial.dim_date;
 GO
 
 CREATE TABLE financial.dim_date (
-    date_key BIGINT NOT NULL IDENTITY(1,1),
-    year INT,
-    quarter INT,
-    month INT,
-    month_name VARCHAR(50),
-    day INT,
-    day_name VARCHAR(50),
-    day_of_week INT,
-    day_type VARCHAR(20),
-    hour INT,
-    minute_block VARCHAR(20),
+    date_key INT NOT NULL,
+    full_date DATE NOT NULL,
+    year INT NOT NULL,
+    quarter INT NOT NULL,
+    quarter_name CHAR(2) NOT NULL,
+    month INT NOT NULL,
+    month_name VARCHAR(50) NOT NULL,
+    day INT NOT NULL,
+    day_name VARCHAR(50) NOT NULL,
+    day_of_week INT NOT NULL,
+    week_of_year INT NOT NULL,
+    day_type VARCHAR(20) NOT NULL,
     -- Metadata
+    dw_load_timestamp DATETIME2 DEFAULT SYSDATETIME() NOT NULL
+);
+GO
+
+-- ---------------------------------------------
+-- Table: financial.dim_time
+-- ---------------------------------------------
+-- Stores time-related details
+USE FinancialDW;
+GO
+DROP TABLE IF EXISTS financial.dim_time;
+GO
+
+CREATE TABLE financial.dim_time (
+    time_key VARCHAR(4) NOT NULL PRIMARY KEY,      -- e.g. 1435 for 14:35
+    time TIME NOT NULL,                     -- 14:35:00
+    hour INT NOT NULL,                      -- 0–23   
+    minute INT NOT NULL,                    -- 0-59
+    minute_block VARCHAR(4) NOT NULL,       -- e.g. 3044 for 14:35 0014, 1529, 3044,4559
+    minute_of_day INT NOT NULL,             -- 0–1439
+    hour_12 INT NOT NULL,                   -- 1–12
+    am_pm CHAR(2) NOT NULL,                 -- AM / PM
+    time_of_day VARCHAR(20) NOT NULL,       -- Night / Morning / Afternoon / Evening
     dw_load_timestamp DATETIME2 DEFAULT SYSDATETIME() NOT NULL
 );
 GO
@@ -139,14 +163,15 @@ GO
 DROP TABLE IF EXISTS financial.fact_transactions;
 GO
 CREATE TABLE financial.fact_transactions (
-    transaction_id INT NOT NULL UNIQUE,
-    transaction_date DATETIME,
-    date_key BIGINT NOT NULL,
+    transaction_id INT NOT NULL,
+    transaction_date DATETIME2,
+    date_key INT NOT NULL,
+    time_key VARCHAR(4) NOT NULL,
     user_key INT NOT NULL,
     card_key INT NOT NULL,
     merchant_key INT NOT NULL,
     amount DECIMAL(10, 2),
-    card_entry_method VARCHAR(50),
+    card_entry_method VARCHAR(20),
     transaction_error VARCHAR(100),
     -- Metadata
     dw_load_timestamp DATETIME2 DEFAULT SYSDATETIME() NOT NULL
