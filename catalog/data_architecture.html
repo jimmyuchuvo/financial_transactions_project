@@ -1,1 +1,375 @@
-PLACEHOLDER_WILL_BE_TOO_LONG
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Financial Transactions DW — Data Architecture (test)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0b0f19;--card:#121826;--elev:#1a2234;--text:#e8edf5;--muted:#94a3b8;--accent:#38bdf8;--accent2:#818cf8;--soft:rgba(56,189,248,.12);--dim:#34d399;--dimsoft:rgba(52,211,153,.12);--fact:#f472b6;--factsoft:rgba(244,114,182,.12);--border:rgba(148,163,184,.15);--r:14px}
+[data-theme=light]{--bg:#f8fafc;--card:#fff;--elev:#f1f5f9;--text:#0f172a;--muted:#64748b;--accent:#0284c7;--accent2:#4f46e5;--soft:rgba(2,132,199,.1);--dim:#059669;--dimsoft:rgba(5,150,105,.1);--fact:#db2777;--factsoft:rgba(219,39,119,.1);--border:rgba(15,23,42,.08)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:var(--accent);text-decoration:none}.container{width:min(1080px,92%);margin:0 auto}
+code{font-family:JetBrains Mono,monospace;font-size:.88em}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .inner{display:flex;align-items:center;justify-content:space-between;height:56px}
+.logo{font-weight:800;font-size:1.05rem;color:var(--text)}.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:1.3rem;list-style:none}.nav-links a{color:var(--muted);font-size:.85rem;font-weight:500}
+.nav-links a:hover,.nav-links a.active{color:var(--accent)}
+.theme-btn{background:var(--elev);border:1px solid var(--border);color:var(--text);width:36px;height:36px;border-radius:9px;cursor:pointer;display:grid;place-items:center}
+.hero{padding:100px 0 60px;position:relative}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% -15%,var(--soft),transparent);pointer-events:none}
+.badge{display:inline-flex;background:var(--soft);color:var(--accent);padding:.28rem .75rem;border-radius:999px;font-size:.75rem;font-weight:600;margin-bottom:.9rem}
+h1{font-size:clamp(1.8rem,4vw,2.4rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:.65rem}
+.lead{color:var(--muted);max-width:620px;margin-bottom:1.3rem;font-size:1rem}
+.meta{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.4rem}
+.meta span{font-size:.74rem;font-weight:600;padding:.25rem .6rem;background:var(--elev);border:1px solid var(--border);border-radius:999px;color:var(--muted);font-family:JetBrains Mono,monospace}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.65rem 1.15rem;border-radius:10px;font-weight:600;font-size:.88rem;border:none;cursor:pointer}
+.btn-p{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
+.btn-o{background:transparent;border:1px solid var(--border);color:var(--text)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.65rem}
+section{padding:60px 0}
+.sl{font-size:.73rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:.4rem}
+h2{font-size:clamp(1.4rem,2.6vw,1.8rem);font-weight:800;letter-spacing:-.03em;margin-bottom:.5rem}
+.sd{color:var(--muted);max-width:580px;margin-bottom:1.7rem;font-size:.95rem}
+.og{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.9rem}
+.oc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.15rem}
+.oc .i{font-size:1.3rem;margin-bottom:.35rem}.oc h3{font-size:.9rem;margin-bottom:.25rem}.oc p{font-size:.82rem;color:var(--muted)}
+.pipe{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.5rem;margin:1.7rem 0}
+.ps{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:.8rem 1.05rem;text-align:center;min-width:115px}
+.ps .n{font-size:.66rem;font-weight:700;color:var(--accent);font-family:JetBrains Mono,monospace}.ps strong{display:block;font-size:.86rem}.ps span{font-size:.7rem;color:var(--muted)}
+.pa{color:var(--muted);font-size:1.1rem}
+.sw{background:var(--card);border:1px solid var(--border);border-radius:calc(var(--r)+4px);padding:1.6rem 1.15rem;overflow-x:auto}
+.sdg{display:grid;grid-template-columns:1fr 1.15fr 1fr;grid-template-rows:auto auto auto;gap:1rem;min-width:700px;align-items:center;justify-items:center}
+.tc{background:var(--elev);border:2px solid var(--border);border-radius:11px;width:100%;max-width:220px;overflow:hidden;cursor:pointer;text-align:left;transition:.2s}
+.tc:hover{transform:translateY(-3px)}.tc.dim{border-color:var(--dim)}.tc.fact{border-color:var(--fact);max-width:255px}
+.tc .th{padding:.55rem .8rem;font-weight:700;font-size:.84rem;display:flex;justify-content:space-between;align-items:center}
+.tc.dim .th{background:var(--dimsoft);color:var(--dim)}.tc.fact .th{background:var(--factsoft);color:var(--fact)}
+.tc .th .bs{font-size:.6rem;font-weight:600;padding:.1rem .35rem;border-radius:4px;background:rgba(0,0,0,.2);font-family:JetBrains Mono,monospace}
+.tc ul{list-style:none;padding:.4rem .8rem .65rem;font-size:.74rem;font-family:JetBrains Mono,monospace;color:var(--muted)}
+.tc ul li{padding:.15rem 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between}
+.tc ul li:last-child{border-bottom:none}.pk{color:var(--accent);font-weight:600}.fk{color:var(--fact)}
+.pos-tl{grid-column:1;grid-row:1}.pos-tr{grid-column:3;grid-row:1}.pos-c{grid-column:2;grid-row:2}
+.pos-bl{grid-column:1;grid-row:3}.pos-bm{grid-column:2;grid-row:3}.pos-br{grid-column:3;grid-row:3}
+.leg{display:flex;flex-wrap:wrap;gap:1.1rem;justify-content:center;margin-top:1.3rem;font-size:.83rem;color:var(--muted)}
+.leg span{display:flex;align-items:center;gap:.35rem}.dot{width:9px;height:9px;border-radius:3px}.dot.d{background:var(--dim)}.dot.f{background:var(--fact)}
+.tabs{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1.1rem}
+.tb{padding:.4rem .9rem;border-radius:999px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:.82rem;font-weight:500;cursor:pointer}
+.tb:hover,.tb.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.tp{display:none}.tp.active{display:block}
+.dc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.3rem}
+.dc h3{font-size:1.08rem;margin-bottom:.3rem}.dc .m{font-size:.83rem;color:var(--muted);margin-bottom:.9rem}
+.ct{width:100%;border-collapse:collapse;font-size:.84rem}
+.ct th,.ct td{text-align:left;padding:.48rem .65rem;border-bottom:1px solid var(--border)}
+.ct th{font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:600}
+.ct td:first-child{font-family:JetBrains Mono,monospace;font-weight:500;color:var(--accent)}
+.ct .t{font-family:JetBrains Mono,monospace;font-size:.76rem;color:var(--muted)}
+.r-pk{color:var(--accent);font-weight:600;font-size:.73rem}.r-fk{color:var(--fact);font-weight:600;font-size:.73rem}.r-m{color:var(--muted);font-size:.73rem}
+.dn{margin-top:.9rem;padding:.8rem .95rem;background:var(--elev);border-radius:9px;font-size:.84rem;color:var(--muted)}.dn strong{color:var(--text)}
+.eg{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.9rem}
+.ec{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.15rem}
+.ec h3{font-size:.9rem;margin-bottom:.4rem;display:flex;align-items:center;gap:.35rem}
+.ec .dt{font-size:.6rem;font-weight:600;padding:.1rem .38rem;background:var(--soft);color:var(--accent);border-radius:4px;font-family:JetBrains Mono,monospace}
+.ec p{font-size:.82rem;color:var(--muted);margin-bottom:.65rem}
+.ec ul{list-style:none;font-size:.78rem;color:var(--muted)}
+.ec ul li{padding:.2rem 0;padding-left:.9rem;position:relative}
+.ec ul li::before{content:'→';position:absolute;left:0;color:var(--accent);font-weight:700}
+.cl{display:inline-block;margin-top:.65rem;font-size:.78rem;font-weight:600}
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+@media(max-width:700px){.sg{grid-template-columns:1fr}}
+.sc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.3rem}
+.sc h3{font-size:1rem;margin-bottom:.65rem}
+.sc ul{list-style:none;font-size:.86rem;color:var(--muted)}
+.sc ul li{padding:.32rem 0;border-bottom:1px solid var(--border);padding-left:1.1rem;position:relative}
+.sc ul li:last-child{border-bottom:none}.sc ul li::before{content:'✓';position:absolute;left:0;color:var(--dim);font-weight:700}
+.sb{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;text-align:center}
+.slinks{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-top:1.1rem}
+.slinks a{font-size:.82rem;font-weight:600;padding:.45rem .85rem;background:var(--elev);border:1px solid var(--border);border-radius:8px;color:var(--text)}
+.slinks a:hover{border-color:var(--accent);color:var(--accent)}
+footer{padding:1.5rem 0;border-top:1px solid var(--border);text-align:center;color:var(--muted);font-size:.78rem}
+@media(max-width:800px){.nav-links{display:none}.pipe{flex-direction:column}.pa{transform:rotate(90deg)}}
+</style>
+</head>
+<body>
+<nav><div class="container inner">
+<a href="#top" class="logo">FinancialDW<span>.</span>Architecture</a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#schema">Star Schema</a></li>
+<li><a href="#tables">Tables</a></li>
+<li><a href="#etl">ETL</a></li>
+<li><a href="#quality">Quality</a></li>
+<li><a href="#source">Source</a></li>
+</ul>
+<button class="theme-btn" id="themeBtn" aria-label="Theme">◐</button>
+</div></nav>
+
+<header class="hero" id="top"><div class="container">
+<div class="badge">test branch · current model</div>
+<h1>Financial Transactions<br/>Data Warehouse Architecture</h1>
+<p class="lead">Dimensional model on the <strong>test</strong> branch: five dimensions (including <code>dim_time</code>), surrogate keys, Parquet sources, Airflow orchestration, data-quality scripts, columnstore indexing and year-based partitioning.</p>
+<div class="meta">
+<span>SQL Server</span><span>Star Schema</span><span>dim_time</span><span>Surrogate keys</span><span>Airflow</span><span>Parquet</span><span>Power BI</span>
+</div>
+<div class="hero-cta">
+<a href="#schema" class="btn btn-p">Explore schema →</a>
+<a href="https://github.com/jimmyuchuvo/financial_transactions_project/tree/test" target="_blank" rel="noopener" class="btn btn-o">test branch</a>
+</div>
+</div></header>
+
+<section id="overview"><div class="container">
+<div class="sl">High-level view</div>
+<h2>Architecture at a glance</h2>
+<p class="sd">Parquet / JSON sources → Python ETL → Airflow DAGs → SQL Server star schema (date + time dims) → Power BI.</p>
+<div class="og">
+<div class="oc"><div class="i">📥</div><h3>Sources</h3><p>cards / users / transactions (Parquet) + mcc_codes.json</p></div>
+<div class="oc"><div class="i">🔄</div><h3>ETL Layer</h3><p>Python extract → transform → load (one module per entity)</p></div>
+<div class="oc"><div class="i">⚙️</div><h3>Orchestration</h3><p>Airflow DAGs in Docker — one DAG per dimension / fact</p></div>
+<div class="oc"><div class="i">🗄️</div><h3>Data Warehouse</h3><p>FinancialDW · schema <code>financial</code> · star + DQ + partitions</p></div>
+</div>
+<div class="pipe">
+<div class="ps"><div class="n">01</div><strong>Extract</strong><span>Parquet / JSON</span></div>
+<div class="pa">→</div>
+<div class="ps"><div class="n">02</div><strong>Transform</strong><span>Keys · clean · types</span></div>
+<div class="pa">→</div>
+<div class="ps"><div class="n">03</div><strong>Load</strong><span>SQL Server</span></div>
+<div class="pa">→</div>
+<div class="ps"><div class="n">04</div><strong>Validate</strong><span>DQ SQL scripts</span></div>
+<div class="pa">→</div>
+<div class="ps"><div class="n">05</div><strong>Optimize</strong><span>Columnstore · partitions</span></div>
+</div>
+</div></section>
+
+<section id="schema"><div class="container">
+<div class="sl">Dimensional model</div>
+<h2>Star schema (test branch)</h2>
+<p class="sd">Fact at the center. Dimensions use <strong>surrogate keys</strong> (<code>*_key</code> IDENTITY) plus natural keys. Date and time are split. Click a table for columns.</p>
+<div class="sw"><div class="sdg">
+<div class="tc dim pos-tl" onclick="showTable('dim_users')"><div class="th">dim_users <span class="bs">DIM</span></div><ul>
+<li><span class="pk">user_key</span><span>PK</span></li><li>user_id (natural)</li><li>gender, age, income…</li><li>+ metadata</li>
+</ul></div>
+<div class="tc dim pos-tr" onclick="showTable('dim_card')"><div class="th">dim_card <span class="bs">DIM</span></div><ul>
+<li><span class="pk">card_key</span><span>PK</span></li><li>card_id (natural)</li><li>brand, type, limit…</li><li>+ metadata</li>
+</ul></div>
+<div class="tc fact pos-c" onclick="showTable('fact_transactions')"><div class="th">fact_transactions <span class="bs">FACT</span></div><ul>
+<li><span class="pk">transaction_id</span></li><li><span class="fk">date_key · time_key</span></li>
+<li><span class="fk">user_key · card_key</span></li><li><span class="fk">merchant_key</span> · amount</li>
+</ul></div>
+<div class="tc dim pos-bl" onclick="showTable('dim_date')"><div class="th">dim_date <span class="bs">DIM</span></div><ul>
+<li><span class="pk">date_key</span><span>PK</span></li><li>full_date, year, quarter</li><li>month, day, day_type</li><li>week_of_year</li>
+</ul></div>
+<div class="tc dim pos-bm" onclick="showTable('dim_time')"><div class="th">dim_time <span class="bs">DIM</span></div><ul>
+<li><span class="pk">time_key</span><span>PK</span></li><li>hour, minute, block</li><li>am_pm, time_of_day</li><li>minute_of_day</li>
+</ul></div>
+<div class="tc dim pos-br" onclick="showTable('dim_merchant')"><div class="th">dim_merchant <span class="bs">DIM</span></div><ul>
+<li><span class="pk">merchant_key</span><span>PK</span></li><li>merchant_id (natural)</li><li>city, state, zip</li><li>mcc + description</li>
+</ul></div>
+</div>
+<div class="leg"><span><span class="dot d"></span> Dimension</span><span><span class="dot f"></span> Fact</span><span>PK · FK (surrogate)</span></div>
+</div></div></section>
+
+<section id="tables"><div class="container">
+<div class="sl">Table definitions</div>
+<h2>Columns & keys</h2>
+<p class="sd">From <code>sql/Create FinancialDW.sql</code> on the test branch.</p>
+<div class="tabs">
+<button class="tb active" data-tab="fact_transactions">fact_transactions</button>
+<button class="tb" data-tab="dim_users">dim_users</button>
+<button class="tb" data-tab="dim_card">dim_card</button>
+<button class="tb" data-tab="dim_merchant">dim_merchant</button>
+<button class="tb" data-tab="dim_date">dim_date</button>
+<button class="tb" data-tab="dim_time">dim_time</button>
+</div>
+
+<div class="tp active" id="panel-fact_transactions"><div class="dc">
+<h3>fact_transactions</h3>
+<div class="m">Grain: one row per transaction · Partitioned by <code>transaction_date</code></div>
+<table class="ct"><thead><tr><th>Column</th><th>Type</th><th>Role</th><th>Description</th></tr></thead><tbody>
+<tr><td>transaction_id</td><td class="t">INT</td><td class="r-pk">Business key</td><td>Unique transaction id</td></tr>
+<tr><td>transaction_date</td><td class="t">DATETIME2</td><td>Partition key</td><td>Full timestamp</td></tr>
+<tr><td>date_key</td><td class="t">INT</td><td class="r-fk">FK → dim_date</td><td>Surrogate date key</td></tr>
+<tr><td>time_key</td><td class="t">VARCHAR(4)</td><td class="r-fk">FK → dim_time</td><td>e.g. 1435</td></tr>
+<tr><td>user_key</td><td class="t">INT</td><td class="r-fk">FK → dim_users</td><td>Surrogate user key</td></tr>
+<tr><td>card_key</td><td class="t">INT</td><td class="r-fk">FK → dim_card</td><td>Surrogate card key</td></tr>
+<tr><td>merchant_key</td><td class="t">INT</td><td class="r-fk">FK → dim_merchant</td><td>Surrogate merchant key</td></tr>
+<tr><td>amount</td><td class="t">DECIMAL(10,2)</td><td>Measure</td><td>Transaction amount</td></tr>
+<tr><td>card_entry_method</td><td class="t">VARCHAR(20)</td><td>Degenerate</td><td>Chip / swipe / tap</td></tr>
+<tr><td>transaction_error</td><td class="t">VARCHAR(100)</td><td>Degenerate</td><td>Error flag</td></tr>
+<tr><td>dw_load_timestamp</td><td class="t">DATETIME2</td><td class="r-m">Metadata</td><td>Load timestamp</td></tr>
+</tbody></table>
+<div class="dn"><strong>Physical design:</strong> <code>ON scheme_partition_by_year (transaction_date)</code>. Clustered columnstore. All dim links use surrogate keys.</div>
+</div></div>
+
+<div class="tp" id="panel-dim_users"><div class="dc">
+<h3>dim_users</h3><div class="m">Surrogate <code>user_key</code> + natural <code>user_id</code></div>
+<table class="ct"><thead><tr><th>Column</th><th>Type</th><th>Role</th><th>Description</th></tr></thead><tbody>
+<tr><td>user_key</td><td class="t">INT IDENTITY</td><td class="r-pk">PK</td><td>Surrogate key</td></tr>
+<tr><td>user_id</td><td class="t">INT UNIQUE</td><td>Natural key</td><td>Source user id</td></tr>
+<tr><td>gender</td><td class="t">VARCHAR(10)</td><td>Attr</td><td>Gender</td></tr>
+<tr><td>current_age</td><td class="t">INT</td><td>Attr</td><td>Current age</td></tr>
+<tr><td>birth_year / birth_month</td><td class="t">SMALLINT</td><td>Attr</td><td>Birth parts</td></tr>
+<tr><td>retirement_age</td><td class="t">SMALLINT</td><td>Attr</td><td>Retirement age</td></tr>
+<tr><td>total_debt</td><td class="t">DECIMAL(18,2)</td><td>Attr</td><td>Total debt</td></tr>
+<tr><td>per_capita_income</td><td class="t">DECIMAL(18,2)</td><td>Attr</td><td>Per-capita income</td></tr>
+<tr><td>yearly_income</td><td class="t">DECIMAL(18,2)</td><td>Attr</td><td>Yearly income</td></tr>
+<tr><td>num_credit_cards</td><td class="t">SMALLINT</td><td>Attr</td><td>Number of cards</td></tr>
+<tr><td>credit_score</td><td class="t">SMALLINT</td><td>Attr</td><td>Credit score</td></tr>
+<tr><td>user_address</td><td class="t">VARCHAR(100)</td><td>Attr</td><td>Address</td></tr>
+<tr><td>latitude / longitude</td><td class="t">FLOAT</td><td>Attr</td><td>Geo coordinates</td></tr>
+<tr><td>dw_load_timestamp</td><td class="t">DATETIME2</td><td class="r-m">Metadata</td><td>Load timestamp</td></tr>
+</tbody></table>
+</div></div>
+
+<div class="tp" id="panel-dim_card"><div class="dc">
+<h3>dim_card</h3><div class="m">Surrogate <code>card_key</code> + natural <code>card_id</code></div>
+<table class="ct"><thead><tr><th>Column</th><th>Type</th><th>Role</th><th>Description</th></tr></thead><tbody>
+<tr><td>card_key</td><td class="t">INT IDENTITY</td><td class="r-pk">PK</td><td>Surrogate key</td></tr>
+<tr><td>card_id</td><td class="t">INT UNIQUE</td><td>Natural key</td><td>Source card id</td></tr>
+<tr><td>user_id</td><td class="t">INT</td><td>Attr</td><td>Owning user (source)</td></tr>
+<tr><td>card_brand</td><td class="t">VARCHAR(50)</td><td>Attr</td><td>Visa, Mastercard…</td></tr>
+<tr><td>card_type</td><td class="t">VARCHAR(50)</td><td>Attr</td><td>Credit / debit</td></tr>
+<tr><td>credit_limit</td><td class="t">DECIMAL(18,2)</td><td>Attr</td><td>Credit limit</td></tr>
+<tr><td>has_chip</td><td class="t">VARCHAR(20)</td><td>Attr</td><td>Chip presence</td></tr>
+<tr><td>expires</td><td class="t">DATE</td><td>Attr</td><td>Expiration</td></tr>
+<tr><td>account_open_date</td><td class="t">DATE</td><td>Attr</td><td>Account open date</td></tr>
+<tr><td>year_pin_last_changed</td><td class="t">INT</td><td>Attr</td><td>Year PIN changed</td></tr>
+<tr><td>num_cards_issued</td><td class="t">INT</td><td>Attr</td><td>Cards issued</td></tr>
+<tr><td>card_on_dark_web</td><td class="t">VARCHAR(10)</td><td>Attr</td><td>Dark-web flag</td></tr>
+<tr><td>dw_load_timestamp</td><td class="t">DATETIME2</td><td class="r-m">Metadata</td><td>Load timestamp</td></tr>
+</tbody></table>
+</div></div>
+
+<div class="tp" id="panel-dim_merchant"><div class="dc">
+<h3>dim_merchant</h3><div class="m">Surrogate <code>merchant_key</code> + natural <code>merchant_id</code></div>
+<table class="ct"><thead><tr><th>Column</th><th>Type</th><th>Role</th><th>Description</th></tr></thead><tbody>
+<tr><td>merchant_key</td><td class="t">INT IDENTITY</td><td class="r-pk">PK</td><td>Surrogate key</td></tr>
+<tr><td>merchant_id</td><td class="t">INT UNIQUE</td><td>Natural key</td><td>Source merchant id</td></tr>
+<tr><td>merchant_state</td><td class="t">VARCHAR(100)</td><td>Attr</td><td>State (or ONLINE)</td></tr>
+<tr><td>merchant_city</td><td class="t">VARCHAR(100)</td><td>Attr</td><td>City</td></tr>
+<tr><td>merchant_zip</td><td class="t">INT</td><td>Attr</td><td>ZIP</td></tr>
+<tr><td>mcc</td><td class="t">INT</td><td>Attr</td><td>Merchant Category Code</td></tr>
+<tr><td>mcc_description</td><td class="t">VARCHAR(255)</td><td>Attr</td><td>MCC description</td></tr>
+<tr><td>dw_load_timestamp</td><td class="t">DATETIME2</td><td class="r-m">Metadata</td><td>Load timestamp</td></tr>
+</tbody></table>
+</div></div>
+
+<div class="tp" id="panel-dim_date"><div class="dc">
+<h3>dim_date</h3><div class="m">Calendar dimension (time is in dim_time)</div>
+<table class="ct"><thead><tr><th>Column</th><th>Type</th><th>Role</th><th>Description</th></tr></thead><tbody>
+<tr><td>date_key</td><td class="t">INT</td><td class="r-pk">PK</td><td>Surrogate date key</td></tr>
+<tr><td>full_date</td><td class="t">DATE</td><td>Attr</td><td>Full calendar date</td></tr>
+<tr><td>year</td><td class="t">INT</td><td>Attr</td><td>Year</td></tr>
+<tr><td>quarter</td><td class="t">INT</td><td>Attr</td><td>Quarter number</td></tr>
+<tr><td>quarter_name</td><td class="t">CHAR(2)</td><td>Attr</td><td>e.g. Q1</td></tr>
+<tr><td>month</td><td class="t">INT</td><td>Attr</td><td>Month number</td></tr>
+<tr><td>month_name</td><td class="t">VARCHAR(50)</td><td>Attr</td><td>Month name</td></tr>
+<tr><td>day</td><td class="t">INT</td><td>Attr</td><td>Day of month</td></tr>
+<tr><td>day_name</td><td class="t">VARCHAR(50)</td><td>Attr</td><td>Day name</td></tr>
+<tr><td>day_of_week</td><td class="t">INT</td><td>Attr</td><td>Day of week</td></tr>
+<tr><td>week_of_year</td><td class="t">INT</td><td>Attr</td><td>Week of year</td></tr>
+<tr><td>day_type</td><td class="t">VARCHAR(20)</td><td>Attr</td><td>Weekday / weekend</td></tr>
+<tr><td>dw_load_timestamp</td><td class="t">DATETIME2</td><td class="r-m">Metadata</td><td>Load timestamp</td></tr>
+</tbody></table>
+</div></div>
+
+<div class="tp" id="panel-dim_time"><div class="dc">
+<h3>dim_time</h3><div class="m">Time-of-day dimension (new on test branch)</div>
+<table class="ct"><thead><tr><th>Column</th><th>Type</th><th>Role</th><th>Description</th></tr></thead><tbody>
+<tr><td>time_key</td><td class="t">VARCHAR(4)</td><td class="r-pk">PK</td><td>e.g. 1435 for 14:35</td></tr>
+<tr><td>time</td><td class="t">TIME</td><td>Attr</td><td>14:35:00</td></tr>
+<tr><td>hour</td><td class="t">INT</td><td>Attr</td><td>0–23</td></tr>
+<tr><td>minute</td><td class="t">INT</td><td>Attr</td><td>0–59</td></tr>
+<tr><td>minute_block</td><td class="t">VARCHAR(4)</td><td>Attr</td><td>15-min block (0014, 1529, 3044, 4559)</td></tr>
+<tr><td>minute_of_day</td><td class="t">INT</td><td>Attr</td><td>0–1439</td></tr>
+<tr><td>hour_12</td><td class="t">INT</td><td>Attr</td><td>1–12</td></tr>
+<tr><td>am_pm</td><td class="t">CHAR(2)</td><td>Attr</td><td>AM / PM</td></tr>
+<tr><td>time_of_day</td><td class="t">VARCHAR(20)</td><td>Attr</td><td>Night / Morning / Afternoon / Evening</td></tr>
+<tr><td>dw_load_timestamp</td><td class="t">DATETIME2</td><td class="r-m">Metadata</td><td>Load timestamp</td></tr>
+</tbody></table>
+<div class="dn"><strong>Why separate dim_time?</strong> Keeps dim_date smaller and enables time-of-day analysis without repeating calendar attributes on every fact row.</div>
+</div></div>
+</div></section>
+
+<section id="etl"><div class="container">
+<div class="sl">Pipelines</div>
+<h2>ETL & orchestration</h2>
+<p class="sd">Modular Python ETL under <code>scripts/ETL/</code>, one Airflow DAG per table.</p>
+<div class="eg">
+<div class="ec"><h3>dim_users <span class="dt">DAG</span></h3><p>Users dimension</p><ul><li>Extract users Parquet</li><li>Transform demographics</li><li>Load financial.dim_users</li></ul>
+<a class="cl" href="https://github.com/jimmyuchuvo/financial_transactions_project/blob/test/docker/airflow/dags/etl_dim_users_dag.py" target="_blank" rel="noopener">View DAG →</a></div>
+<div class="ec"><h3>dim_card <span class="dt">DAG</span></h3><p>Cards dimension</p><ul><li>Extract cards Parquet</li><li>Transform attributes</li><li>Load financial.dim_card</li></ul>
+<a class="cl" href="https://github.com/jimmyuchuvo/financial_transactions_project/blob/test/docker/airflow/dags/etl_dim_card_dag.py" target="_blank" rel="noopener">View DAG →</a></div>
+<div class="ec"><h3>dim_merchant <span class="dt">DAG</span></h3><p>Merchant + MCC</p><ul><li>Extract + mcc_codes.json</li><li>Build merchant_key</li><li>Load financial.dim_merchant</li></ul>
+<a class="cl" href="https://github.com/jimmyuchuvo/financial_transactions_project/blob/test/docker/airflow/dags/etl_dim_merchant_dag.py" target="_blank" rel="noopener">View DAG →</a></div>
+<div class="ec"><h3>dim_date <span class="dt">DAG</span></h3><p>Calendar dimension</p><ul><li>Generate date attributes</li><li>quarter_name, week_of_year…</li><li>Load financial.dim_date</li></ul>
+<a class="cl" href="https://github.com/jimmyuchuvo/financial_transactions_project/blob/test/docker/airflow/dags/etl_dim_date_dag.py" target="_blank" rel="noopener">View DAG →</a></div>
+<div class="ec"><h3>fact_transactions <span class="dt">DAG</span></h3><p>Fact (depends on dims)</p><ul><li>Extract transactions Parquet</li><li>Resolve all surrogate keys</li><li>Load financial.fact_transactions</li></ul>
+<a class="cl" href="https://github.com/jimmyuchuvo/financial_transactions_project/blob/test/docker/airflow/dags/etl_fact_transactions_dag.py" target="_blank" rel="noopener">View DAG →</a></div>
+<div class="ec"><h3>Shared ETL package</h3><p><code>scripts/ETL/</code></p><ul><li>config · extract · load</li><li>transform_* modules</li><li>utils.py</li></ul>
+<a class="cl" href="https://github.com/jimmyuchuvo/financial_transactions_project/tree/test/scripts/ETL" target="_blank" rel="noopener">View package →</a></div>
+</div></div></section>
+
+<section id="quality"><div class="container">
+<div class="sl">Reliability & performance</div>
+<h2>Data quality, indexes & partitioning</h2>
+<p class="sd">From the SQL scripts on the test branch.</p>
+<div class="sg">
+<div class="sc"><h3>✓ Data quality checks</h3>
+<ul>
+<li>Duplicate keys</li>
+<li>NULLs in critical columns</li>
+<li>Negative / outlier amounts</li>
+<li>Future-dated transactions</li>
+<li>Unexpected entry methods</li>
+<li>Error-type frequency</li>
+<li>Referential integrity (orphan FKs)</li>
+<li>dw_load_timestamp freshness</li>
+</ul>
+<p style="margin-top:.8rem;font-size:.82rem;color:var(--muted)">Scripts under <code>sql/*_data_quality_check.sql</code></p>
+</div>
+<div class="sc"><h3>⚡ Indexing & partitioning</h3>
+<ul>
+<li>Clustered columnstore on fact_transactions</li>
+<li>PK on all dimension surrogate keys</li>
+<li>Partition function by year (2017–2019 + future)</li>
+<li>Filegroups FG_2017 … FG_FUTURE</li>
+<li>Scheme mapped to filegroups</li>
+<li>Fact: <code>ON scheme_partition_by_year (transaction_date)</code></li>
+</ul>
+<p style="margin-top:.8rem;font-size:.82rem;color:var(--muted)"><code>index_strategy.sql</code> · <code>partitioning_strategy.sql</code></p>
+</div>
+</div></div></section>
+
+<section id="source"><div class="container">
+<div class="sb">
+<div class="sl" style="display:flex;justify-content:center">Source of truth</div>
+<h2 style="margin-bottom:.4rem">test branch on GitHub</h2>
+<p style="color:var(--muted);max-width:480px;margin:0 auto">This page reflects the current model on <code>test</code>. Existing diagrams live in <code>catalog/</code>.</p>
+<div class="slinks">
+<a href="https://github.com/jimmyuchuvo/financial_transactions_project/tree/test" target="_blank" rel="noopener">test branch</a>
+<a href="https://github.com/jimmyuchuvo/financial_transactions_project/blob/test/sql/Create%20FinancialDW.sql" target="_blank" rel="noopener">Create FinancialDW.sql</a>
+<a href="https://github.com/jimmyuchuvo/financial_transactions_project/tree/test/catalog" target="_blank" rel="noopener">catalog/</a>
+<a href="https://github.com/jimmyuchuvo/financial_transactions_project/tree/test/scripts/ETL" target="_blank" rel="noopener">ETL package</a>
+<a href="https://github.com/jimmyuchuvo/financial_transactions_project/tree/test/docker/airflow/dags" target="_blank" rel="noopener">Airflow DAGs</a>
+<a href="https://github.com/jimmyuchuvo/financial_transactions_project/blob/test/README.md" target="_blank" rel="noopener">README</a>
+</div>
+</div></div></section>
+
+<footer><div class="container">
+Jimmy Uchuvo · Financial Transactions DW · Architecture based on <strong>test</strong> branch ·
+<a href="https://github.com/jimmyuchuvo/financial_transactions_project/tree/test" target="_blank" rel="noopener">github.com/jimmyuchuvo</a>
+</div></footer>
+
+<script>
+const themeBtn=document.getElementById('themeBtn'),root=document.documentElement;
+if(localStorage.getItem('theme-arch')==='light')root.setAttribute('data-theme','light');
+themeBtn.onclick=()=>{const l=root.getAttribute('data-theme')==='light';if(l){root.removeAttribute('data-theme');localStorage.setItem('theme-arch','dark')}else{root.setAttribute('data-theme','light');localStorage.setItem('theme-arch','light')}};
+const tbs=document.querySelectorAll('.tb'),tps=document.querySelectorAll('.tp');
+function showTable(id){tbs.forEach(b=>b.classList.toggle('active',b.dataset.tab===id));tps.forEach(p=>p.classList.toggle('active',p.id==='panel-'+id));document.getElementById('tables').scrollIntoView({behavior:'smooth',block:'start'})}
+tbs.forEach(b=>b.onclick=()=>showTable(b.dataset.tab));window.showTable=showTable;
+const secs=document.querySelectorAll('section[id],header[id]'),nas=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{let c='';secs.forEach(s=>{if(pageYOffset>=s.offsetTop-100)c=s.id});nas.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+c))});
+</script>
+</body>
+</html>
